@@ -20,6 +20,9 @@ Normalize source, source_job_id, title, company, location, work_mode, remote_eli
 
 Apply location, work-mode, and seniority filters explicitly. Remote does not imply worldwide eligibility. Do not infer country eligibility from remote=true. Exact employer statements govern. Distinguish hybrid from remote. Seniority may be explicitly stated or inferred from duties/years; label inference and evidence. Unknown required fields cannot silently pass strict filters. Show excluded counts, reasons, unknowns, and coverage. Present title/company, location/remote restrictions, seniority, source, date if known, and original link, with attribution. Never invent salaries or visa sponsorship.
 
+## Jobs from any platform
+Any listing from any platform (LinkedIn, Indeed, Dice, Built In, Jobright, Workday career sites, company pages, recruiter emails) can enter the same pipeline when the user brings it: they paste the description or the full text, attach a saved page or export, or give the posting URL. For a URL the user supplies, fetch only that one public page, once. If it needs a sign-in, shows a login wall or bot check, or is blocked, do not bypass it: say so and ask the user to paste the text. Never crawl a platform's search results. Normalize the listing to the same fields, label its source as user-provided from that platform, keep the original link, and then filter, score, tailor and track it exactly like feed results. Fields the text does not show stay unknown. See the platform table in the Sources section below for the best route per platform.
+
 ## Explain resume matches
 Extract an evidence inventory with exact resume snippets or section references. Exclude protected traits and proxies such as name, age, ethnicity, disability, gender, and school prestige. Do not invent experience, credentials, or work authorization. Compare jobs only against job-related requirements. Report explicit hard requirements (license, location, work authorization) as met, unmet, or unknown independently of the score.
 
@@ -60,6 +63,24 @@ If the user has connected an Indeed or Dice connector, its search and detail too
 
 ## Finding an employer's board token
 Open the company's careers page and look at the job link URLs: boards.greenhouse.io/{token} or job-boards.greenhouse.io/{token} for Greenhouse, jobs.lever.co/{site} for Lever, jobs.ashbyhq.com/{name} for Ashby. Ask the user for target companies; do not guess tokens.
+
+## Route per platform
+Checked 2026-10-26: I found no documented public jobs API for Workday career sites or Built In, only third-party scrapers, which this skill does not use. LinkedIn and Jobright are treated the same way unless the user connects an official connector.
+
+| Platform | Best route in this skill |
+|---|---|
+| Greenhouse | Public board API (see above), per company |
+| Lever | Public postings API (see above), per company |
+| Ashby | Public posting API (see above), per company |
+| Indeed | Connected Indeed connector if available; otherwise pasted listings |
+| Dice | Connected Dice connector if available; otherwise pasted listings |
+| LinkedIn | User pastes the description or a saved page; never scrape or log in |
+| Built In | User pastes the description or gives one public job URL |
+| Jobright and other AI job tools | User pastes or exports the matches they want analysed |
+| Workday career sites | User pastes the description or gives one public job URL; no scraping of the career site's internal endpoints |
+| Anything else | Pasted text or one user-supplied public URL, or a documented feed added to this registry |
+
+Whatever the route, the same filters, scoring, tailoring and tracker apply.
 
 ## Arbeitnow public API
 Terms: https://www.arbeitnow.com/terms

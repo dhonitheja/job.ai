@@ -63,6 +63,7 @@ Try prompts like:
 ## What it does
 
 - Searches only documented public sources (Greenhouse, Lever and Ashby employer boards, Arbeitnow) plus Indeed or Dice if you have those connectors connected, and records coverage and exclusions.
+- Works with listings from any platform (LinkedIn, Indeed, Dice, Built In, Jobright, Workday career sites): paste the description or one public URL and it filters, scores and tracks it like any other job. Platforms without a documented public API are never scraped.
 - Tailors resume bullets and cover letters on request, using only facts your resume supports.
 - Scores resume fit with a transparent heuristic: required skills 45, responsibilities 30, seniority 15, preferred 10.
 - Keeps a CSV/JSON application tracker with status history. Saving a job is never treated as applying.

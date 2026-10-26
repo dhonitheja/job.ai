@@ -21,6 +21,24 @@ If the user has connected an Indeed or Dice connector, its search and detail too
 ## Finding an employer's board token
 Open the company's careers page and look at the job link URLs: boards.greenhouse.io/{token} or job-boards.greenhouse.io/{token} for Greenhouse, jobs.lever.co/{site} for Lever, jobs.ashbyhq.com/{name} for Ashby. Ask the user for target companies; do not guess tokens.
 
+## Route per platform
+Checked 2026-10-26: I found no documented public jobs API for Workday career sites or Built In, only third-party scrapers, which this skill does not use. LinkedIn and Jobright are treated the same way unless the user connects an official connector.
+
+| Platform | Best route in this skill |
+|---|---|
+| Greenhouse | Public board API (see above), per company |
+| Lever | Public postings API (see above), per company |
+| Ashby | Public posting API (see above), per company |
+| Indeed | Connected Indeed connector if available; otherwise pasted listings |
+| Dice | Connected Dice connector if available; otherwise pasted listings |
+| LinkedIn | User pastes the description or a saved page; never scrape or log in |
+| Built In | User pastes the description or gives one public job URL |
+| Jobright and other AI job tools | User pastes or exports the matches they want analysed |
+| Workday career sites | User pastes the description or gives one public job URL; no scraping of the career site's internal endpoints |
+| Anything else | Pasted text or one user-supplied public URL, or a documented feed added to this registry |
+
+Whatever the route, the same filters, scoring, tailoring and tracker apply.
+
 ## Arbeitnow public API
 Terms: https://www.arbeitnow.com/terms
 Public endpoint: https://www.arbeitnow.com/api/job-board-api

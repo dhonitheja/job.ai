@@ -1,6 +1,6 @@
 ---
 name: ai-job-search
-description: "Use when the user wants to find jobs through permitted public APIs, feeds or connected job-board connectors, filter location/remote/seniority, compare a resume with jobs using explainable scores, tailor resume bullets or a cover letter truthfully, or track applications."
+description: "Use when the user wants to find jobs through permitted public APIs, feeds or connected job-board connectors, or analyse listings pasted from any platform (LinkedIn, Indeed, Dice, Built In, Workday sites), filter location/remote/seniority, compare a resume with jobs using explainable scores, tailor resume bullets or a cover letter truthfully, or track applications."
 ---
 
 # AI Job Search
@@ -18,6 +18,9 @@ Use GET only. Fetch a bounded result set (default at most 3 pages per provider a
 Normalize source, source_job_id, title, company, location, work_mode, remote_eligible_regions, seniority, employment_type, description, job_url, published_at, retrieved_at, salary if explicit. Preserve unknown fields as unknown; publication and retrieval times differ. Deduplicate by source ID then canonical employer job URL; keep provenance across duplicates. Treat listings as potentially stale and link to the original for verification.
 
 Apply location, work-mode, and seniority filters explicitly. Remote does not imply worldwide eligibility. Do not infer country eligibility from remote=true. Exact employer statements govern. Distinguish hybrid from remote. Seniority may be explicitly stated or inferred from duties/years; label inference and evidence. Unknown required fields cannot silently pass strict filters. Show excluded counts, reasons, unknowns, and coverage. Present title/company, location/remote restrictions, seniority, source, date if known, and original link, with attribution. Never invent salaries or visa sponsorship.
+
+## Jobs from any platform
+Any listing from any platform (LinkedIn, Indeed, Dice, Built In, Jobright, Workday career sites, company pages, recruiter emails) can enter the same pipeline when the user brings it: they paste the description or the full text, attach a saved page or export, or give the posting URL. For a URL the user supplies, fetch only that one public page, once. If it needs a sign-in, shows a login wall or bot check, or is blocked, do not bypass it: say so and ask the user to paste the text. Never crawl a platform's search results. Normalize the listing to the same fields, label its source as user-provided from that platform, keep the original link, and then filter, score, tailor and track it exactly like feed results. Fields the text does not show stay unknown. See the platform table in references/sources.md for the best route per platform.
 
 ## Explain resume matches
 Extract an evidence inventory with exact resume snippets or section references. Exclude protected traits and proxies such as name, age, ethnicity, disability, gender, and school prestige. Do not invent experience, credentials, or work authorization. Compare jobs only against job-related requirements. Report explicit hard requirements (license, location, work authorization) as met, unmet, or unknown independently of the score.
