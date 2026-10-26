@@ -48,6 +48,10 @@ See the [Claude Code plugin docs](https://code.claude.com/docs/en/plugin-marketp
 
 The [`chatgpt/`](chatgpt) folder is the original ChatGPT package (`plugin.json` plus `skills/`). It has not been tested here; follow OpenAI's current documentation for installing plugin or skill packages.
 
+### Meta Muse and other assistants
+
+Muse's support for installable skills is not confirmed by Meta. Instead, paste the contents of [`muse/ai-job-search-muse.md`](muse/ai-job-search-muse.md) into a chat and ask the assistant to follow it. It is the same skill merged into one file, and it has not been tested in Muse.
+
 ## Use it
 
 Try prompts like:
