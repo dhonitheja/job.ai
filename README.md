@@ -58,14 +58,16 @@ Try prompts like:
 
 ## What it does
 
-- Searches only documented public sources (Greenhouse published boards, Arbeitnow) and records coverage and exclusions.
+- Searches only documented public sources (Greenhouse, Lever and Ashby employer boards, Arbeitnow) plus Indeed or Dice if you have those connectors connected, and records coverage and exclusions.
+- Tailors resume bullets and cover letters on request, using only facts your resume supports.
 - Scores resume fit with a transparent heuristic: required skills 45, responsibilities 30, seniority 15, preferred 10.
 - Keeps a CSV/JSON application tracker with status history. Saving a job is never treated as applying.
 - Never submits applications, scrapes LinkedIn/Indeed, or sends your resume to job providers.
 
 ## Notes
 
-- Greenhouse boards are employer-specific, so you need the board token of the company you want to search.
+- Greenhouse, Lever and Ashby boards are employer-specific, so you need the board name of each company you want to search. The skill explains how to find it from a careers-page link; it never guesses.
+- The Indeed and Dice connector support is untested here and depends on those connectors being connected in your account.
 - Source terms change; recheck them before relying on a feed (see `skills/ai-job-search/references/sources.md`).
 
 ## License

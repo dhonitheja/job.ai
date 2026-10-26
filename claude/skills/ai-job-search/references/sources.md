@@ -7,6 +7,20 @@ Documentation: https://docs.greenhouse.io/job-board.html
 Documented read endpoint: GET https://boards-api.greenhouse.io/v1/boards/{board_token}/jobs?content=true
 Obtain the board token from the employer's actual public Greenhouse board or user input, never invent it. Field mapping (checked against a live board): id -> source_job_id, title, location.name -> location, absolute_url -> job_url, content -> description. The feed exposes updated_at, not a publication date, so record it as updated_at and leave published_at unknown. This is employer-specific coverage, not a global search index. Use the documented public GET API only and preserve employer original absolute_url. Respect employer/provider policies. The authenticated POST application endpoint is out of scope and must never be called.
 
+## Lever published postings
+Documentation: https://github.com/lever/postings-api
+Documented read endpoint: GET https://api.lever.co/v0/postings/{site}?mode=json (EU-hosted companies: https://api.eu.lever.co/v0/postings/{site}). Pagination: skip and limit. Filters: location, commitment, team, department, level (values are case-sensitive; encode URL parameters). The docs state only published postings are visible and third parties may read them. Field mapping (checked against Lever's public demo site on 2026-10-26): id -> source_job_id, text -> title, categories -> location/team/commitment, createdAt -> published_at, hostedUrl -> job_url, workplaceType, salaryRange only if present. Take {site} from the employer's public jobs.lever.co URL or from the user; never invent it. Employer-specific coverage, not a global index. GET only; never call the application POST endpoint.
+
+## Ashby published postings
+Documentation: https://developers.ashbyhq.com/docs/public-job-posting-api
+Documented read endpoint: GET https://api.ashbyhq.com/posting-api/job-board/{JOB_BOARD_NAME}?includeCompensation=true. {JOB_BOARD_NAME} is the last segment of the employer's jobs.ashbyhq.com URL. The docs show the call without an API key but do not state authentication requirements explicitly; stop on 401/403. Field mapping (checked against Ashby's own board on 2026-10-26): id -> source_job_id, title, location, workplaceType (OnSite/Remote/Hybrid), employmentType, publishedAt -> published_at, jobUrl -> job_url, descriptionPlain -> description. Include salary only when the compensation field is present and explicit.
+
+## Connected job-board connectors (Indeed, Dice)
+If the user has connected an Indeed or Dice connector, its search and detail tools are a permitted source, because the user authorized that connection; they are not scraping. Send only role, location and filter terms in queries, never resume text. Use a connector's resume-reading tool (for example an Indeed resume fetch) only if the user explicitly asks for it. Tag results with the connector as source, keep the original job link, and apply the same filters and unknown-handling as for other sources. If no such connector is connected, say so and rely on the public feeds; do not scrape those sites.
+
+## Finding an employer's board token
+Open the company's careers page and look at the job link URLs: boards.greenhouse.io/{token} or job-boards.greenhouse.io/{token} for Greenhouse, jobs.lever.co/{site} for Lever, jobs.ashbyhq.com/{name} for Ashby. Ask the user for target companies; do not guess tokens.
+
 ## Arbeitnow public API
 Terms: https://www.arbeitnow.com/terms
 Public endpoint: https://www.arbeitnow.com/api/job-board-api

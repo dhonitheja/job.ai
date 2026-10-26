@@ -1,6 +1,6 @@
 {
   "name": "ai-job-search",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Search permitted public job APIs and feeds, filter roles, explain resume matches with an evidence-based score, and maintain a user-controlled application tracker.",
   "author": {
     "name": "dhonitheja"
