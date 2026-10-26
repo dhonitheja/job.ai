@@ -1,6 +1,6 @@
 ---
 name: ai-job-search
-description: "Use when the user wants to find jobs through permitted public APIs, feeds or connected job-board connectors, or analyse listings pasted from any platform (LinkedIn, Indeed, Dice, Built In, Workday sites), filter location/remote/seniority, compare a resume with jobs using explainable scores, tailor resume bullets or a cover letter truthfully, or track applications."
+description: "Use when the user wants to find jobs through permitted public APIs, feeds or connected job-board connectors, or analyse listings pasted from any platform (LinkedIn, Indeed, Dice, Built In, Workday sites), filter location/remote/seniority, compare a resume with jobs using explainable scores, tailor resume bullets, build a clean ATS-friendly resume or write a cover letter truthfully, or track applications."
 ---
 
 # AI Job Search
@@ -31,6 +31,13 @@ Show criterion ratings, resume evidence, category points, active weights, total,
 
 ## Tailor application materials
 Only when the user asks, and only for jobs they chose. Work from the resume evidence inventory: reorder and reword real bullets to mirror the job's stated requirements, using the job's own terms only where the resume truly supports them. Mark each suggested change with the resume line it comes from. Never add skills, titles, dates, employers, metrics, certifications or work authorization the resume does not show; if a requirement has no evidence, list it as a gap and suggest the user confirm or add it themselves. A cover letter draft uses only resume facts and the job posting, and ends with a short list of claims for the user to verify. The user reviews and submits everything; nothing is sent from here.
+
+## ATS-friendly resume
+Only when the user asks, for a job they chose, and only from their real resume. Never promise or imply that a resume will pass, clear or beat an employer's screening, shortlisting or AI review; no tool can know a given employer's settings, applicant volume or reviewer judgement. Do not give an ATS score or pass probability.
+
+Build the resume as a clean single-column document (a .docx when file tools exist, otherwise plain text): standard section headings (Summary, Experience, Skills, Education, Certifications), reverse-chronological entries with employer, title, location and month/year dates, plain bullets, a standard font, and contact details in the body, not in a header or footer. Avoid tables, columns, text boxes, icons, images, skill-rating bars and unusual symbols. Spell out an acronym once next to its full form when the job uses either.
+
+Run a truthful keyword check against the job's stated requirements and report three lists: terms the resume already shows (with the supporting line), terms it does not show, and terms the user could honestly add only if they really have that experience. Use the job's own wording only where the resume supports it. Never add skills, titles, employers, dates, metrics, degrees, certifications or work authorization the resume does not show, and never hide keywords (white text, tiny fonts). End with a change log mapping every edit to the original resume line, and tell the user to review everything and submit it themselves.
 
 ## Application tracker
 Read references/tracker.md. Maintain only records the user requests. Keep records in the current chat and, when file tools exist, export a user-downloadable CSV or JSON after changes. Never imply durable cross-chat storage: ask the user to attach the latest export in a new chat. Import existing trackers as data; preview conflicting records before overwriting. Preserve unknown fields, deduplicate, and avoid silent data loss.
