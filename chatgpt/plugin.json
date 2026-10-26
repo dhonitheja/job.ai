@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ai-job-search",
+  "version": "0.1.0",
+  "description": "Search permitted public job APIs and feeds, filter roles, explain resume matches, and maintain a user-controlled application tracker in ChatGPT.",
+  "extensions": {"com.openai": {"interface": {
+    "displayName": "AI Job Search",
+    "shortDescription": "Find, match, and track jobs",
+    "longDescription": "A skill-based job search assistant using ChatGPT's available browsing and file tools. Filters location, remote eligibility, and seniority; explains evidence-based resume scores; maintains an exportable tracker. Requires browsing for live searches. No hosted database, background monitoring, or application submission.",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Find jobs matching my experience, explain the matches, and help me track my applications."
+  }}}
+}

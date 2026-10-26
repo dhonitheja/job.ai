@@ -1,0 +1,10 @@
+{
+  "name": "ai-job-search",
+  "version": "0.2.0",
+  "description": "Search permitted public job APIs and feeds, filter roles, explain resume matches with an evidence-based score, and maintain a user-controlled application tracker.",
+  "author": {
+    "name": "dhonitheja"
+  },
+  "license": "MIT",
+  "keywords": ["jobs", "job-search", "resume", "tracker"]
+}
