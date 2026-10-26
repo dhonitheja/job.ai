@@ -9,6 +9,44 @@ It ships in two versions with the same behavior:
 | [`claude/`](claude) | Claude | `.claude-plugin/plugin.json` |
 | [`chatgpt/`](chatgpt) | ChatGPT | `plugin.json` |
 
+## Install
+
+### Claude.ai (web or desktop app)
+
+1. Zip the skill folder `claude/skills/ai-job-search/` (the folder that contains `SKILL.md`). The folder name must stay `ai-job-search`.
+2. Go to **Settings > Capabilities** and turn on **Code execution and file creation**.
+3. In the **Skills** section, click **Upload skill**, choose the zip, and toggle the skill on.
+
+Available on Pro, Max and Team plans. On Enterprise, an Owner must enable skills first. Uploaded skills are private to your account. See [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude).
+
+### Claude Code (terminal)
+
+```bash
+git clone https://github.com/dhonitheja/job.ai
+claude --plugin-dir ./job.ai/claude
+```
+
+This loads the plugin for the session. To keep the skill permanently, copy the folder instead:
+
+```bash
+mkdir -p ~/.claude/skills
+cp -r job.ai/claude/skills/ai-job-search ~/.claude/skills/
+```
+
+See the [Claude Code plugin docs](https://code.claude.com/docs/en/plugin-marketplaces.md).
+
+### ChatGPT
+
+The [`chatgpt/`](chatgpt) folder is the original ChatGPT package (`plugin.json` plus `skills/`). It has not been tested here; follow OpenAI's current documentation for installing plugin or skill packages.
+
+## Use it
+
+Try prompts like:
+
+- "Find backend engineer jobs on the Greenhouse board `<company-token>` that are remote in the US."
+- "Compare my resume (attached) against these three roles and explain the scores."
+- "Add this job to my tracker as saved."
+
 ## What it does
 
 - Searches only documented public sources (Greenhouse published boards, Arbeitnow) and records coverage and exclusions.
