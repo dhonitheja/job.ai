@@ -1,0 +1,14 @@
+{
+  "name": "job-ai",
+  "description": "AI job search skill: search permitted public job APIs, explain resume matches, track applications",
+  "owner": {
+    "name": "Sai Teja Ragula"
+  },
+  "plugins": [
+    {
+      "name": "ai-job-search",
+      "source": "./claude",
+      "description": "Find jobs via permitted public feeds, score resume fit with an explainable rubric, and keep an application tracker"
+    }
+  ]
+}

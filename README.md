@@ -13,7 +13,7 @@ It ships in two versions with the same behavior:
 
 ### Claude.ai (web or desktop app)
 
-1. Zip the skill folder `claude/skills/ai-job-search/` (the folder that contains `SKILL.md`). The folder name must stay `ai-job-search`.
+1. Download [`ai-job-search.zip`](ai-job-search.zip) from this repo. It contains the skill folder `ai-job-search/` with `SKILL.md` inside. (To build it yourself, zip `claude/skills/ai-job-search/` and keep the folder name.)
 2. Go to **Settings > Capabilities** and turn on **Code execution and file creation**.
 3. In the **Skills** section, click **Upload skill**, choose the zip, and toggle the skill on.
 
@@ -21,12 +21,21 @@ Available on Pro, Max and Team plans. On Enterprise, an Owner must enable skills
 
 ### Claude Code (terminal)
 
+Install from this repo as a marketplace:
+
+```bash
+claude plugin marketplace add dhonitheja/job.ai
+claude plugin install ai-job-search@job-ai
+```
+
+Or try it for one session from a clone:
+
 ```bash
 git clone https://github.com/dhonitheja/job.ai
 claude --plugin-dir ./job.ai/claude
 ```
 
-This loads the plugin for the session. To keep the skill permanently, copy the folder instead:
+To keep just the skill without the plugin, copy the folder instead:
 
 ```bash
 mkdir -p ~/.claude/skills
